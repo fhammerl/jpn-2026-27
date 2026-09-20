@@ -324,6 +324,33 @@ const RESORT_IMAGES = {
     "https://images.unsplash.com/photo-1558862107-d49ef2a04d72?auto=format&fit=crop&w=1200&q=80",
 };
 
+const SKI_MAPS = {
+  niseko: {
+    title: "Niseko United ski map",
+    sources: [{ label: "Niseko United map", url: "https://www.niseko.ne.jp/en/map/" }],
+  },
+  hakuba: {
+    title: "Hakuba Valley ski map",
+    sources: [{ label: "Hakuba Valley map", url: "https://www.hakubavalley.com/" }],
+  },
+  nozawa: {
+    title: "Nozawa Onsen ski map",
+    sources: [{ label: "Nozawa Onsen map", url: "https://nozawaski.com/" }],
+  },
+  "honshu-combo": {
+    title: "Madarao, Tangram and Nozawa ski maps",
+    sources: [
+      { label: "Madarao map", url: "https://www.madarao.jp/ski/en/course/" },
+      { label: "Tangram map", url: "https://www.tangram.jp/english/" },
+      { label: "Nozawa Onsen map", url: "https://nozawaski.com/" },
+    ],
+  },
+  furano: {
+    title: "Furano ski map",
+    sources: [{ label: "Furano map", url: "https://www.princehotels.com/furano/ski/" }],
+  },
+};
+
 const HOTEL_IMAGES = {
   "Mominoki Hotel":
     "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=500&q=80",
@@ -433,6 +460,7 @@ function renderResortPlans() {
           <p class="flight-price">${plan.flightPrice} from Zurich, economy, usually with one stop.</p>
           <div class="resort-offer">
             <img class="resort-image" src="${RESORT_IMAGES[pick.hotelKey]}" alt="Representative Japan town view for ${pick.name}" loading="lazy" />
+            <button class="ski-map-button" type="button" data-ski-map="${pick.hotelKey}">View ski map</button>
             <h4>${pick.name}</h4>
             <p class="resort-offer-reason">${pick.reason}</p>
             <p class="resort-offer-description">${pick.description}</p>
@@ -524,6 +552,12 @@ function renderResortPlans() {
 
 function bindEvents() {
   document.querySelector("#resort-plans").addEventListener("click", (event) => {
+    const mapButton = event.target.closest("[data-ski-map]");
+    if (mapButton) {
+      openSkiMap(mapButton.dataset.skiMap);
+      return;
+    }
+
     const button = event.target.closest("[data-resort-page]");
     if (!button) return;
 
@@ -538,7 +572,42 @@ function bindEvents() {
 
 }
 
+function openSkiMap(mapKey) {
+  const map = SKI_MAPS[mapKey];
+  const dialog = document.querySelector("#ski-map-dialog");
+  if (!map || !dialog) return;
+
+  dialog.querySelector("h2").textContent = map.title;
+  dialog.querySelector(".ski-map-sources").innerHTML = map.sources
+    .map(
+      (source) => `
+        <div class="ski-map-frame">
+          <iframe src="${source.url}" title="${source.label}" loading="lazy"></iframe>
+          <a href="${source.url}" target="_blank" rel="noreferrer">${source.label} ↗</a>
+        </div>
+      `,
+    )
+    .join("");
+  dialog.showModal();
+}
+
 function initialize() {
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    `
+      <dialog id="ski-map-dialog" class="ski-map-dialog">
+        <div class="ski-map-dialog-heading">
+          <h2></h2>
+          <button type="button" class="ski-map-close" aria-label="Close ski map">×</button>
+        </div>
+        <div class="ski-map-sources"></div>
+      </dialog>
+    `,
+  );
+  const dialog = document.querySelector("#ski-map-dialog");
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog || event.target.closest(".ski-map-close")) dialog.close();
+  });
   renderResortPlans();
   bindEvents();
 }
