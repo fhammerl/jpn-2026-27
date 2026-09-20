@@ -9,28 +9,9 @@ const TRIP = {
       picks: [
         {
           rank: "Top 1",
-          name: "Rusutsu",
-          hotelKey: "rusutsu",
-          reason: "Best snow bet and good lift infrastructure; expensive holiday lodging.",
-          detail: "Cold Hokkaido powder · queues usually better than Niseko",
-          description:
-            "The strongest Christmas-period choice if the priority is cold, dry snow rather than village life. Rusutsu is large enough to occupy the trip, but the limited resort lodging makes this the most availability-sensitive option.",
-          fit: "Best when snow quality comes first and the budget can absorb peak-season prices.",
-          stats: {
-            height: "400–994 m",
-            difficulty: "Intermediate-friendly",
-            pistes: "Very good grooming",
-            snow: "Cold, dry Hokkaido powder; resort cites ~14 m a season",
-            transfer: "CTS airport · ~2–2.5 h by bus",
-            touristy: "International, but less hectic than Niseko; East No. 2 gondola queues at peak mornings",
-            offpiste: "★★★★☆ · designated trees and gates; beyond gates is uncontrolled",
-          },
-        },
-        {
-          rank: "Top 2",
           name: "Niseko United",
           hotelKey: "niseko",
-          reason: "The second-best snow bet for late December, and the easiest resort to run a two-week trip from — at a steep holiday price.",
+          reason: "The best snow bet for late December, and the easiest resort to run a two-week trip from — at a steep holiday price.",
           detail: "Excellent powder · premium lodging · likely queues",
           description:
             "Ranked here on snow, not convenience: coastal south-west Hokkaido has the most dependable late-December base in Japan, and Niseko is one of very few Japanese resorts with enough terrain variety to genuinely fill two weeks. The cost is real — Christmas/New Year is exactly when its popularity shows up in prices, availability and lift queues, so book early or not at all.",
@@ -46,7 +27,7 @@ const TRIP = {
           },
         },
         {
-          rank: "Honshu alternative",
+          rank: "Top 2",
           name: "Hakuba Valley",
           hotelKey: "hakuba",
           reason: "The most variety and the best accommodation flexibility for two weeks.",
@@ -65,7 +46,7 @@ const TRIP = {
           },
         },
         {
-          rank: "Small-resort plan",
+          rank: "Top 3",
           name: "Nozawa Onsen + Madarao/Tangram",
           hotelKey: "honshu-combo",
           reason: "Village, onsen and larger terrain in Nozawa, with quieter tree days nearby.",
@@ -84,13 +65,13 @@ const TRIP = {
           },
         },
         {
-          rank: "Additional option",
+          rank: "Top 4",
           name: "Furano",
           hotelKey: "furano",
           reason: "Colder and quieter, but the riskiest snow bet of this window.",
           detail: "Late-December base is the least certain · longer transfer",
           description:
-            "Last on this list for a reason. Furano sits inland in Central Hokkaido, which is a bigger early-season gamble than the coastal resorts — and its own peak powder window only really starts in early January. It gets ~8–9 m against Rusutsu’s ~14 m. Worth holding as a calm, uncrowded fallback if the bigger Hokkaido resorts are sold out.",
+            "Last on this list for a reason. Furano sits inland in Central Hokkaido, which is a bigger early-season gamble than the coastal resorts — and its own peak powder window only really starts in early January. Worth holding as a calm, uncrowded fallback if the bigger Hokkaido resorts are sold out.",
           fit: "A fallback for availability and quiet, not a late-December snow play.",
           stats: {
             height: "235–1,074 m",
@@ -114,25 +95,6 @@ const TRIP = {
       picks: [
         {
           rank: "Top 1",
-          name: "Rusutsu",
-          hotelKey: "rusutsu",
-          reason: "Strongest combination of mature base, cold powder and manageable crowds.",
-          detail: "Best powder-focused choice",
-          description:
-            "By mid-January the base should be established and the cold Hokkaido pattern is at its most attractive. Rusutsu offers enough lift-served terrain for the full stay without Niseko’s same level of international pressure.",
-          fit: "Best overall if powder and snow reliability are the main decision criteria.",
-          stats: {
-            height: "400–994 m",
-            difficulty: "Intermediate-friendly",
-            pistes: "Very good grooming",
-            snow: "Cold, dry Hokkaido powder; resort cites ~14 m a season",
-            transfer: "CTS airport · ~2–2.5 h by bus",
-            touristy: "Quieter than Niseko, but January is peak Australian holiday month",
-            offpiste: "★★★★☆ · designated trees and gates; backcountry is uncontrolled",
-          },
-        },
-        {
-          rank: "Top 2",
           name: "Nozawa Onsen",
           hotelKey: "nozawa",
           reason: "Best balance of snow, village atmosphere, onsen and accommodation value.",
@@ -151,7 +113,7 @@ const TRIP = {
           },
         },
         {
-          rank: "Small-resort plan",
+          rank: "Top 2",
           name: "Madarao + Tangram, then Nozawa",
           hotelKey: "honshu-combo",
           reason: "Compact powder days followed by a larger village and more terrain.",
@@ -170,13 +132,13 @@ const TRIP = {
           },
         },
         {
-          rank: "Additional option",
+          rank: "Top 3",
           name: "Furano",
           hotelKey: "furano",
           reason: "Cold, dry snow and lower crowds, with better mid-January conditions than the holiday period.",
-          detail: "Smaller and less varied than Rusutsu; longer transfer from CTS",
+          detail: "Smaller and less varied than Nozawa; longer transfer from CTS",
           description:
-            "Furano becomes a more credible mid-January choice because the snow base is more established and the lower crowd level is easier to enjoy. It still does not outrank Rusutsu or Nozawa for a two-week trip because the terrain and village are more limited.",
+            "Furano becomes a more credible mid-January choice because the snow base is more established and the lower crowd level is easier to enjoy. It still does not outrank Nozawa for a two-week trip because the terrain and village are more limited.",
           fit: "Good for a quieter Hokkaido trip, but not the strongest all-round two-week base.",
           stats: {
             height: "235–1,074 m",
@@ -184,18 +146,18 @@ const TRIP = {
             pistes: "Excellent quality, but few blue runs — repetitive over two weeks",
             snow: "Very cold and dry; ~8–9 m, peak powder window is Jan–Feb",
             transfer: "CTS airport · ~2.5–3 h by bus",
-            touristy: "Quieter than Niseko and Rusutsu",
+            touristy: "Quieter than Niseko and Nozawa",
             offpiste: "★★★☆☆ · tolerated by patrol, but no formal gate system",
           },
         },
         {
-          rank: "Additional option",
+          rank: "Top 4",
           name: "Niseko United",
           hotelKey: "niseko",
           reason: "Excellent snow and the widest international support network, at a clear premium.",
-          detail: "Better after New Year · still busier and pricier than Rusutsu",
+          detail: "Better after New Year · still busier and pricier than Nozawa",
           description:
-            "Mid-January removes some of the holiday pressure, making Niseko more reasonable than in the first window. It still usually costs more and feels busier than Rusutsu, but the terrain, services and après-ski options are hard to beat.",
+            "Mid-January removes some of the holiday pressure, making Niseko more reasonable than in the first window. It still usually costs more and feels busier than Nozawa, but the terrain, services and après-ski options are hard to beat.",
           fit: "Good if convenience, restaurants and a social scene outweigh the extra cost.",
           stats: {
             height: "260–1,200 m lift-served · 1,308 m peak",
@@ -216,22 +178,6 @@ const resortPage = {};
 
 const HOTEL_OPTIONS = {
   "Christmas / New Year": {
-    rusutsu: [
-      {
-        name: "Rusutsu Resort Hotel",
-        area: "Rusutsu",
-        price: "CHF 280–450 / night · CHF 3,920–6,300 total",
-        note: "Onsen and pool; convenient but premium Christmas pricing.",
-        link: "https://rusutsu.com/en/",
-      },
-      {
-        name: "The Westin Rusutsu Resort",
-        area: "Rusutsu",
-        price: "CHF 350–550 / night · CHF 4,900–7,700 total",
-        note: "Excellent ski access and facilities; more expensive than the target range.",
-        link: "https://www.marriott.com/en-us/hotels/ctswi-the-westin-rusutsu-resort/overview/",
-      },
-    ],
     hakuba: [
       {
         name: "Mominoki Hotel",
@@ -298,22 +244,6 @@ const HOTEL_OPTIONS = {
     ],
   },
   "Mid-January": {
-    rusutsu: [
-      {
-        name: "Rusutsu Resort Hotel",
-        area: "Rusutsu",
-        price: "CHF 190–320 / night · CHF 2,660–4,480 total",
-        note: "Onsen and pool; much better value after New Year, subject to inventory.",
-        link: "https://rusutsu.com/en/",
-      },
-      {
-        name: "The Westin Rusutsu Resort",
-        area: "Rusutsu",
-        price: "CHF 260–420 / night · CHF 3,640–5,880 total",
-        note: "Strong ski access and facilities; premium but sometimes competitive mid-season.",
-        link: "https://www.marriott.com/en-us/hotels/ctswi-the-westin-rusutsu-resort/overview/",
-      },
-    ],
     nozawa: [
       {
         name: "Ryokan Sakaya",
@@ -367,7 +297,7 @@ const HOTEL_OPTIONS = {
         name: "Hotel Niseko Alpen",
         area: "Hirafu",
         price: "CHF 180–310 / night · CHF 2,520–4,340 total",
-        note: "Central onsen and pool; still priced above Rusutsu or Furano.",
+        note: "Central onsen and pool; still priced above Furano.",
         link: "https://www.hotel-nisekoalpen.com/",
       },
       {
@@ -382,8 +312,6 @@ const HOTEL_OPTIONS = {
 };
 
 const RESORT_IMAGES = {
-  rusutsu:
-    "https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=1200&q=80",
   niseko:
     "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1200&q=80",
   hakuba:
@@ -397,10 +325,6 @@ const RESORT_IMAGES = {
 };
 
 const HOTEL_IMAGES = {
-  "Rusutsu Resort Hotel":
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80",
-  "The Westin Rusutsu Resort":
-    "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=500&q=80",
   "Mominoki Hotel":
     "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=500&q=80",
   "Sierra Resort Hakuba":
@@ -439,7 +363,6 @@ const COST_SUMMARY = {
 };
 
 const RESORT_RATINGS = {
-  Rusutsu: { difficulty: 3, snow: 5, piste: 5, transfer: 4, size: 4, sizeLabel: "Large resort" },
   "Niseko United": { difficulty: 4, snow: 5, piste: 4, transfer: 4, size: 5, sizeLabel: "Large interconnected area" },
   "Hakuba Valley": { difficulty: 4, snow: 3, piste: 4, transfer: 3, size: 5, sizeLabel: "Very large valley network" },
   "Nozawa Onsen + Madarao/Tangram": { difficulty: 3, snow: 4, piste: 4, transfer: 3, size: 4, sizeLabel: "Medium areas combined" },
