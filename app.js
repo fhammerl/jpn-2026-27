@@ -228,18 +228,11 @@ const HOTEL_OPTIONS = {
     ],
     niseko: [
       {
-        name: "Hotel Niseko Alpen",
-        area: "Hirafu",
-        price: "CHF 260–450 / night · CHF 3,640–6,300 total",
-        note: "Central, with onsen and pool; peak dates are expensive.",
-        link: "https://www.hotel-nisekoalpen.com/",
-      },
-      {
-        name: "The Freshwater",
-        area: "Hirafu",
-        price: "CHF 220–380 / night · CHF 3,080–5,320 total",
-        note: "Apartment-style rooms with kitchens; good for controlling food costs.",
-        link: "https://www.thefreshwater.com/",
+        name: "Green Leaf Niseko Village",
+        area: "Niseko Village",
+        price: "Live Booking.com rate · check dates and room details",
+        note: "User-selected listing; the supplied link currently shows 15–27 Jan 2027 for two adults.",
+        link: "https://www.booking.com/hotel/jp/green-leaf-niseko-village.en-gb.html?aid=2419703&label=metagha-link-LUCH-hotel-251143_dev-desktop_los-1_bw-6_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-ein1_aud-9181519621_gacid-21415139176_mcid-10_ppa-1_clrid-0_ad-1_gstkid-0_checkin=20260927_ppt-G1_lp-2756_r-11584762737429984905&sid=cdf53f79de930cce90543974fd9b09c3&all_sr_blocks=26270103_91787708_2_33_0&checkin=2027-01-15&checkout=2027-01-27&dest_id=-238842&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=26270103_91787708_2_33_0&hpos=1&matching_block_id=26270103_91787708_2_33_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=26270103_91787708_2_33_0__112531000&srepoch=1789924327&srpvid=fbaa78efff7812a8&type=total&ucfs=1&",
       },
     ],
   },
@@ -294,18 +287,11 @@ const HOTEL_OPTIONS = {
     ],
     niseko: [
       {
-        name: "Hotel Niseko Alpen",
-        area: "Hirafu",
-        price: "CHF 180–310 / night · CHF 2,520–4,340 total",
-        note: "Central onsen and pool; still priced above Furano.",
-        link: "https://www.hotel-nisekoalpen.com/",
-      },
-      {
-        name: "The Freshwater",
-        area: "Hirafu",
-        price: "CHF 160–280 / night · CHF 2,240–3,920 total",
-        note: "Apartment-style rooms and kitchens; useful for a longer stay.",
-        link: "https://www.thefreshwater.com/",
+        name: "Green Leaf Niseko Village",
+        area: "Niseko Village",
+        price: "Live Booking.com rate · check dates and room details",
+        note: "User-selected listing; the supplied link currently shows 15–27 Jan 2027 for two adults.",
+        link: "https://www.booking.com/hotel/jp/green-leaf-niseko-village.en-gb.html?aid=2419703&label=metagha-link-LUCH-hotel-251143_dev-desktop_los-1_bw-6_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-ein1_aud-9181519621_gacid-21415139176_mcid-10_ppa-1_clrid-0_ad-1_gstkid-0_checkin=20260927_ppt-G1_lp-2756_r-11584762737429984905&sid=cdf53f79de930cce90543974fd9b09c3&all_sr_blocks=26270103_91787708_2_33_0&checkin=2027-01-15&checkout=2027-01-27&dest_id=-238842&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=26270103_91787708_2_33_0&hpos=1&matching_block_id=26270103_91787708_2_33_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=26270103_91787708_2_33_0__112531000&srepoch=1789924327&srpvid=fbaa78efff7812a8&type=total&ucfs=1&",
       },
     ],
   },
@@ -362,14 +348,12 @@ const HOTEL_IMAGES = {
     "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=500&q=80",
   "Hotel Tangram":
     "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=500&q=80",
+  "Green Leaf Niseko Village":
+    "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=500&q=80",
   "Furano Prince Hotel":
     "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80",
   "Furano Natulux Hotel":
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80",
-  "Hotel Niseko Alpen":
-    "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80",
-  "The Freshwater":
-    "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=500&q=80",
   "Wafu Pension Miyazawa":
     "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80",
 };
@@ -400,7 +384,7 @@ const RESORT_RATINGS = {
 
 function parseHotelTotal(price) {
   const match = price.match(/CHF\s+([\d,]+)–([\d,]+)\s+total/);
-  if (!match) return [0, 0];
+  if (!match) return null;
   return match.slice(1).map((value) => Number(value.replace(/,/g, "")));
 }
 
@@ -433,10 +417,14 @@ function renderResortPlans() {
         const hotels = HOTEL_OPTIONS[plan.name][pick.hotelKey];
         const costs = COST_SUMMARY[plan.name];
         const hotelTotals = hotels.map((hotel) => parseHotelTotal(hotel.price));
-        const finalTotals = hotelTotals.map((hotelTotal) => [
-          costs.flightRange[0] + costs.liftPassRange[0] + hotelTotal[0],
-          costs.flightRange[1] + costs.liftPassRange[1] + hotelTotal[1],
-        ]);
+        const finalTotals = hotelTotals.map((hotelTotal) =>
+          hotelTotal
+            ? [
+                costs.flightRange[0] + costs.liftPassRange[0] + hotelTotal[0],
+                costs.flightRange[1] + costs.liftPassRange[1] + hotelTotal[1],
+              ]
+            : null,
+        );
         const ratings = RESORT_RATINGS[pick.name];
 
         return `
@@ -482,7 +470,7 @@ function renderResortPlans() {
           </div>
           <div class="hotel-ideas">
             <div class="hotel-ideas-heading">
-              <strong>Two hotel ideas for this window</strong>
+              <strong>${hotels.length === 1 ? "Hotel listing for this window" : "Two hotel ideas for this window"}</strong>
               <span>14-night planning estimates · room for two</span>
             </div>
             ${hotels
@@ -520,7 +508,7 @@ function renderResortPlans() {
                 <strong role="cell">${costs.liftPasses}</strong>
               </div>
               <div class="cost-table-row cost-table-subhead" role="row">
-                <strong role="rowheader">Final with either hotel</strong>
+                <strong role="rowheader">${hotels.length === 1 ? "Final with this hotel" : "Final with either hotel"}</strong>
                 <span role="cell">hotel + flights + passes</span>
               </div>
               ${hotels
@@ -529,10 +517,18 @@ function renderResortPlans() {
                     <div class="cost-table-row cost-table-total" role="row">
                       <span role="rowheader">${hotel.name}</span>
                       <strong role="cell">
-                        ${formatChfRange(finalTotals[index])}
-                        <span class="price-rating ${priceRating(finalTotals[index], plan.name).className}">
+                        ${
+                          finalTotals[index]
+                            ? formatChfRange(finalTotals[index])
+                            : "Verify live hotel rate"
+                        }
+                        ${
+                          finalTotals[index]
+                            ? `<span class="price-rating ${priceRating(finalTotals[index], plan.name).className}">
                           ${priceRating(finalTotals[index], plan.name).label}
-                        </span>
+                        </span>`
+                            : ""
+                        }
                       </strong>
                     </div>
                   `,
